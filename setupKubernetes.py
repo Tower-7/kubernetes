@@ -1,6 +1,6 @@
 # -*- coding:utf8 -*-
 import os
 # 安装kubernetes
-os.system('yum -y install git')
-os.system('cd /usr/local/ && git clone https://github.com/Tower-7/kubernetes.git')
-os.system('cd /usr/local/kubernetes && tar -zxvf kubernetes.tar.gz')
+os.system('mv -f /config/kubernetes/kubernetes.repo /etc/yum.repos.d/')
+os.system('yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes')
+os.system('systemctl enable kubelet && systemctl start kubelet')
